@@ -1,0 +1,18 @@
+{% extends 'main/pattern.html' %} 
+
+{% block title %} 
+Создание задачи 
+{%endblock%} 
+
+{% block content %}
+<h1>Создание задачи</h1>
+<form method="post" action="">
+    {% csrf_token %}
+  <label>Название </label>
+  {{ form.title }}
+  <label>Описание</label>
+  {{ form.task }}
+  <button type="submit"class="btn btn-primary">Отправить</button>
+  <span> {{ error }}</span>
+</form>
+{% endblock %}
