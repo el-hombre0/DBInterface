@@ -1,35 +1,75 @@
 {% extends 'main/pattern.html' %}
 
-{% block title %} 
+{% block title %}
 {{ title }}
-{% endblock %} 
+{% endblock %}
 
 {% block content %}
+
+<form method="POST" action="create/">
+  {% csrf_token %}
+  <!-- <div class="mb-3">
+    <label>ID постояльца</label>
+    <input type="text" name="id_guest">
+  </div> -->
+  <div class="mb-3">
+    <label class="form-label">ID администратора</label>
+    <input class="form-control" type="text" name="id_administrator">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">ID номера</label>
+    <input class="form-control" type="text" name="id_room">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Имя</label>
+    <input class="form-control" type="text" name="first_name">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Фамилия</label>
+    <input class="form-control" type="text" name="second_name">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Дата рождения</label>
+    <input class="form-control" type="date" name="birth_date">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Цель визита</label>
+    <input class="form-control" type="text" name="visit_purpose">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Заметка</label>
+    <input class="form-control" type="text" name="note">
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+  </div>
+</form>
+
 <h2>Список гостей</h2>
 <div class="table-responsive-sm">
-<table class="table table-hover">
+  <table class="table table-hover">
     <thead>
-        <th>ID постояльца</th>
-        <th>ID администратора</th>
-        <th>ID номера</th>
-        <th>Имя</th>
-        <th>Фамилия</th>
-        <th>Дата рождения</th>
-        <th>Цель визита</th>
-        <th>Заметка</th>
+      <th>ID постояльца</th>
+      <th>ID администратора</th>
+      <th>ID номера</th>
+      <th>Имя</th>
+      <th>Фамилия</th>
+      <th>Дата рождения</th>
+      <th>Цель визита</th>
+      <th>Заметка</th>
     </thead>
     {% for guest in guests %}
     <tr>
-        <td>{{ guest.id_guest}}</td>
-        <td>{{ guest.id_administrator}}</td>
-        <td>{{ guest.id_room}}</td>
-        <td>{{ guest.first_name }}</td>
-        <td>{{ guest.second_name }}</td>
-        <td>{{ guest.birth_date }}</td>
-        <td>{{ guest.visit_purpose }}</td>
-        <td>{{ guest.note }}</td>
+      <td>{{ guest.id_guest}}</td>
+      <td>{{ guest.id_administrator}}</td>
+      <td>{{ guest.id_room}}</td>
+      <td>{{ guest.first_name }}</td>
+      <td>{{ guest.second_name }}</td>
+      <td>{{ guest.birth_date }}</td>
+      <td>{{ guest.visit_purpose }}</td>
+      <td>{{ guest.note }}</td>
     </tr>
     {% endfor %}
-</table>
+  </table>
 </div>
 {% endblock %}

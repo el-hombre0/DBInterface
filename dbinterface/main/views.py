@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 
 from .models import Guest
 
@@ -13,6 +14,19 @@ from .models import Guest
 def index(request):
     guests = Guest.objects.all()
     return render(request, 'main/index.html', {'title': 'Список гостей', 'guests': guests})
+
+def create(request):
+    if request.method == "POST":
+        guest = Guest()
+        guest.id_administrator = request.POST.get("id_administrator")
+        guest.id_room = request.POST.get("id_room")
+        guest.first_name = request.POST.get("first_name")
+        guest.second_name = request.POST.get("second_name")
+        guest.birth_date = request.POST.get("birth_date")
+        guest.visit_purpose = request.POST.get("visit_purpose")
+        guest.note = request.POST.get("note")
+        guest.save()
+    return HttpResponseRedirect("/")
 
 
 # def about(request):
