@@ -5,25 +5,31 @@
 {% endblock %} 
 
 {% block content %}
-    <h1>Приветствуем Вас на нашем сайте!</h1>
-    <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio sed possimus
-    quidem tempora, eligendi sint minus in eos nihil cumque et blanditiis eum,
-    aliquam excepturi reiciendis suscipit nostrum amet! Id.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio sed possimus
-      quidem tempora, eligendi sint minus in eos nihil cumque et blanditiis eum,
-      aliquam excepturi reiciendis suscipit nostrum amet! Id.
-    </p>
-    {% if tasks %}
-      {% for el in tasks %}
-        <div class="alert alert-warning mt-2">
-          <h3>{{ el.title }}</h3>
-          <p>{{ el.task }}</p>
-        </div>
-      {% endfor %}
-    {% else %}
-        <p>В таблице нет записей</p>
-    {% endif %}
+<h2>Список гостей</h2>
+<div class="table-responsive-sm">
+<table class="table table-hover">
+    <thead>
+        <th>ID постояльца</th>
+        <th>ID администратора</th>
+        <th>ID номера</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Дата рождения</th>
+        <th>Цель визита</th>
+        <th>Заметка</th>
+    </thead>
+    {% for guest in guests %}
+    <tr>
+        <td>{{ guest.id_guest}}</td>
+        <td>{{ guest.id_administrator}}</td>
+        <td>{{ guest.id_room}}</td>
+        <td>{{ guest.first_name }}</td>
+        <td>{{ guest.second_name }}</td>
+        <td>{{ guest.birth_date }}</td>
+        <td>{{ guest.visit_purpose }}</td>
+        <td>{{ guest.note }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
 {% endblock %}
