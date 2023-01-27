@@ -28,6 +28,25 @@ def create(request):
         guest.save()
     return HttpResponseRedirect("/")
 
+def edit(request, id_guest):
+    try:
+        guest = Guest.objects.get(id_guest=id_guest)
+
+        if request.method == "POST":
+            guest.id_administrator = request.POST.get("id_administrator")
+            guest.id_room = request.POST.get("id_room")
+            guest.first_name = request.POST.get("first_name")
+            guest.second_name = request.POST.get("second_name")
+            guest.birth_date = request.POST.get("birth_date")
+            guest.visit_purpose = request.POST.get("visit_purpose")
+            guest.note = request.POST.get("note")
+            guest.save()
+            return HttpResponseRedirect("/")
+        else:
+            return render(request, "main/edit.html", {"guest": guest})
+
+    except Guest.DoesNotExist:
+        return HttpResponseNotFound("<h2>Гость не найден!</h2>")
 
 # def about(request):
 

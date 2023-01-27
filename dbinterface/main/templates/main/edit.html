@@ -1,0 +1,46 @@
+{% extends 'main/pattern.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label class="form-label">ID постояльца</label>
+        <input class="form-control" type="text" name="id_administrator" value="{{ guest.id_administrator}}" disabled readonly>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">ID администратора</label>
+        <input class="form-control" type="text" name="id_administrator" value="{{ guest.id_administrator}}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">ID номера</label>
+        <input class="form-control" type="text" name="id_room" value="{{ guest.id_room}}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Имя</label>
+        <input class="form-control" type="text" name="first_name" value="{{ guest.first_name}}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Фамилия</label>
+        <input class="form-control" type="text" name="second_name" value="{{ guest.second_name}}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Дата рождения</label>
+        <input class="form-control" type="date" name="birth_date" value="{{ guest.birth_date}}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Цель визита</label>
+        <input class="form-control" type="text" name="visit_purpose" value="{{ guest.visit_purpose}}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Заметка</label>
+        <input class="form-control" type="text" name="note" value="{{ guest.note}}">
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </div>
+</form>
+{% endblock %}
