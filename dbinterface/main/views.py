@@ -1,21 +1,15 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 
-from .models import Guest
+from .models import Guest, Payment
 
 # Create your views here.
 
-# def index(request):
-
-#     tasks = Task.objects.order_by('id')[:]
-
-#     return render(request, 'main/index.html', {'title': 'Главная страница сайта', 'tasks': tasks})
-
-def index(request):
+def guests(request):
     guests = Guest.objects.all()
-    return render(request, 'main/index.html', {'title': 'Список гостей', 'guests': guests})
+    return render(request, 'main/guests.html', {'title': 'Список гостей', 'guests': guests})
 
-def create(request):
+def guest_create(request):
     if request.method == "POST":
         guest = Guest()
         guest.id_administrator = request.POST.get("id_administrator")
@@ -28,7 +22,7 @@ def create(request):
         guest.save()
     return HttpResponseRedirect("/")
 
-def edit(request, id_guest):
+def guest_edit(request, id_guest):
     try:
         guest = Guest.objects.get(id_guest=id_guest)
 
@@ -43,13 +37,13 @@ def edit(request, id_guest):
             guest.save()
             return HttpResponseRedirect("/")
         else:
-            return render(request, "main/edit.html", {"guest": guest})
+            return render(request, "main/guest_edit.html", {"guest": guest})
 
     except Guest.DoesNotExist:
         return HttpResponseNotFound("<h2>Гость не найден!</h2>")
 
 
-def delete(request, id_guest):
+def guest_delete(request, id_guest):
     try:
         guest = Guest.objects.get(id_guest=id_guest)
         guest.delete()
@@ -57,6 +51,10 @@ def delete(request, id_guest):
     except Guest.DoesNotExist:
         return HttpResponseNotFound("<h2>Гость не найден!</h2>")
 
+
+def payments(request):
+    payments = Payment.objects.all()
+    return render(request, 'main/payments.html', {'title': 'Платежи', 'payments': payments})
 # def about(request):
 
 #     return render(request, 'main/about.html')

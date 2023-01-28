@@ -16,5 +16,19 @@ class Guest(models.Model):
         return self.id_guest
     
     class Meta:
-        verbose_name = 'Гость'
-        verbose_name_plural = 'Гости'
+        verbose_name = 'Постоялец'
+        verbose_name_plural = 'Постояльцы'
+
+class Payment(models.Model):
+    id_payment = models.AutoField('ID платежа', primary_key=True)
+    id_room = models.IntegerField('ID комнаты')
+    check_in_date = models.DateField('Дата заезда')
+    check_out_date = models.DateField('Дата выезда')
+    payment_accommodation = models.DecimalField('Стоимость проживания', max_digits=12, decimal_places=2)
+
+    def __str__(self):
+        return self.id_payment
+    
+    class Meta:
+        verbose_name = 'Платёж'
+        verbose_name_plural = 'Платежи'
