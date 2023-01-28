@@ -48,6 +48,15 @@ def edit(request, id_guest):
     except Guest.DoesNotExist:
         return HttpResponseNotFound("<h2>Гость не найден!</h2>")
 
+
+def delete(request, id_guest):
+    try:
+        guest = Guest.objects.get(id_guest=id_guest)
+        guest.delete()
+        return HttpResponseRedirect("/")
+    except Guest.DoesNotExist:
+        return HttpResponseNotFound("<h2>Гость не найден!</h2>")
+
 # def about(request):
 
 #     return render(request, 'main/about.html')
