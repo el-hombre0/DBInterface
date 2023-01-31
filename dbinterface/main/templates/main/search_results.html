@@ -1,0 +1,31 @@
+{% extends 'main/pattern.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block menu %}
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" href=""></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href=""></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href=""></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href=""></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'payments' %}">Платежи</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'guests' %}">Список гостей</a>
+    </li>
+  </ul>
+{% endblock %}
+
+{% block content %}
+{% endblock %}

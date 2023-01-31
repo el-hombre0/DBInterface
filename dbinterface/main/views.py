@@ -1,9 +1,16 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
+# from django.views.generic import ListView
 
 from .models import Guest, Payment
 
 # Create your views here.
+
+def search_results(request):
+    return render(request, 'main/search_results.html', {'title': 'Поиск'})
+# class SearchResultsView(ListView):
+#     model = Guest
+#     template_name = 'search_results.html'
 
 def guests(request):
     guests = Guest.objects.all()

@@ -3,7 +3,28 @@
 {% block title %}
 {{ title }}
 {% endblock %}
-
+{% block menu %}
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href=""></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href=""></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href=""></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href=""></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'payments' %}">Платежи</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'guests' %}">Список гостей</a>
+  </li>
+</ul>
+{% endblock %}
 {% block content %}
 
 <form method="POST" action="guest_create/">
@@ -45,7 +66,7 @@
   </div>
 </form>
 
-<h2>Список гостей</h2>
+<h2>{{ title }}</h2>
 <div class="table-responsive-sm">
   <table class="table table-hover">
     <thead>
