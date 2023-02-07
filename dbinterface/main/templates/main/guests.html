@@ -25,7 +25,9 @@
   </li>
 </ul>
 {% endblock %}
+
 {% block content %}
+<h2>{{ title }}</h2>
 
 <form method="POST" action="guest_create/">
   {% csrf_token %}

@@ -28,4 +28,33 @@
 {% endblock %}
 
 {% block content %}
+<h2>{{ title }}</h2>
+<div class="table-responsive-sm">
+  <table class="table table-hover">
+    <thead>
+      <th>ID постояльца</th>
+      <th>ID администратора</th>
+      <th>ID номера</th>
+      <th>Имя</th>
+      <th>Фамилия</th>
+      <th>Дата рождения</th>
+      <th>Цель визита</th>
+      <th>Заметка</th>
+    </thead>
+    {% for guest in guests %}
+    <tr>
+      <td>{{ guest.id_guest}}</td>
+      <td>{{ guest.id_administrator}}</td>
+      <td>{{ guest.id_room}}</td>
+      <td>{{ guest.first_name }}</td>
+      <td>{{ guest.second_name }}</td>
+      <td>{{ guest.birth_date }}</td>
+      <td>{{ guest.visit_purpose }}</td>
+      <td>{{ guest.note }}</td>
+      <td><a href="guest_edit/{{guest.id_guest}}">Изменить</a></td>
+      <td><a href="guest_delete/{{guest.id_guest}}">Удалить</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
 {% endblock %}

@@ -24,6 +24,21 @@
             <span class="fs-4">Hotel database</span>
           </a>
           {% block menu %}{% endblock %}
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="{% url 'search_results' %}" method="get">
+            <div class="form-floating">
+              <select class="form-select" id="floatingSelect" >
+                <option value="1">Дополнительные услуги</option>
+                <option value="2">Адреса</option>
+                <option value="3">Администраторы</option>
+                <option value="4">Гости</option>
+                <option value="5">Платежи</option>
+                <option value="6">Паспорта</option>
+                <option value="7">Номера</option>
+              </select>
+              <label for="floatingSelect">Что необходимо найти?</label>
+            </div>
+            <input type="search" name="q" class="form-control" placeholder="Найти..." aria-label="Поиск">
+          </form>
         </div>
 
 

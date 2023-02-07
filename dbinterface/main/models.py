@@ -11,6 +11,7 @@ class Guest(models.Model):
     birth_date = models.DateField('Дата рождения')
     visit_purpose = models.TextField('Цель визита')
     note = models.TextField('Заметка')
+    
 
     def __str__(self):
         return self.id_guest

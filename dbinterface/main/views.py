@@ -1,16 +1,23 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 # from django.views.generic import ListView
+from django.db.models import Q
 
 from .models import Guest, Payment
 
 # Create your views here.
 
 def search_results(request):
-    return render(request, 'main/search_results.html', {'title': 'Поиск'})
-# class SearchResultsView(ListView):
-#     model = Guest
-#     template_name = 'search_results.html'
+    query = request.GET.get('q')
+    search_thing = "1"
+    match search_thing:
+        case "1":
+            add_serv = AddServ.object.filter()
+            return render(request, 'main/search_results.html', {'title': 'Поиск', 'guests': add_serv})
+
+    guests = Guest.objects.filter(Q(first_name=query) | Q(second_name=query))
+    return render(request, 'main/search_results.html', {'title': 'Поиск', 'guests': guests})
+
 
 def guests(request):
     guests = Guest.objects.all()
