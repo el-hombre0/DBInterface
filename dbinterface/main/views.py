@@ -9,14 +9,31 @@ from .models import Guest, Payment
 
 def search_results(request):
     query = request.GET.get('q')
-    search_thing = "1"
-    match search_thing:
-        case "1":
-            add_serv = AddServ.object.filter()
-            return render(request, 'main/search_results.html', {'title': 'Поиск', 'guests': add_serv})
-
-    guests = Guest.objects.filter(Q(first_name=query) | Q(second_name=query))
-    return render(request, 'main/search_results.html', {'title': 'Поиск', 'guests': guests})
+    option_value = request.GET['choose_search']
+    match option_value:
+        # case "1":
+        #     add_services = AddService.object.filter()
+        #     return render(request, 'main/search_results.html', {'title': 'Поиск', 'add_services': add_services})
+        # case "2":
+        #     addresses = Address.object.filter()
+        #     return render(request, 'main/search_results.html', {'title': 'Поиск', 'addresses': addresses})
+        # case "3":
+        #     administrators = Administrator.object.filter()
+        #     return render(request, 'main/search_results.html', {'title': 'Поиск', 'administrators': administrators})
+        case "4":
+            guests = Guest.objects.filter(Q(first_name=query) | Q(second_name=query))
+            return render(request, 'main/search_results.html', {'title': 'Поиск', 'guests': guests})
+        case "5":
+            payments = Payment.objects.filter(Q(id_payment=query) | Q(id_room=query))
+            return render(request, 'main/search_results.html', {'title': 'Поиск', 'payments': payments})
+        # case "6":
+        #     guests = Guest.objects.filter(Q(first_name=query) | Q(second_name=query))
+        #     return render(request, 'main/search_results.html', {'title': 'Поиск', 'guests': guests})
+        # case "7":
+        #     guests = Guest.objects.filter(Q(first_name=query) | Q(second_name=query))
+        #     return render(request, 'main/search_results.html', {'title': 'Поиск', 'guests': guests})
+        case _:
+            pass
 
 
 def guests(request):

@@ -26,7 +26,7 @@
           {% block menu %}{% endblock %}
           <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="{% url 'search_results' %}" method="get">
             <div class="form-floating">
-              <select class="form-select" id="floatingSelect" >
+              <select class="form-select" name="choose_search" >
                 <option value="1">Дополнительные услуги</option>
                 <option value="2">Адреса</option>
                 <option value="3">Администраторы</option>

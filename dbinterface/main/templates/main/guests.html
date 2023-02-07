@@ -27,7 +27,7 @@
 {% endblock %}
 
 {% block content %}
-<h2>{{ title }}</h2>
+<h2>Добавить гостя</h2>
 
 <form method="POST" action="guest_create/">
   {% csrf_token %}
@@ -69,6 +69,7 @@
 </form>
 
 <h2>{{ title }}</h2>
+<button type="button" class="btn btn-success">Добавить гостя</button>
 <div class="table-responsive-sm">
   <table class="table table-hover">
     <thead>
